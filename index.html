@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ko" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>김주형 | 개발자 포트폴리오</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts - Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Inter 폰트를 기본으로 사용하고, 한국어는 Noto Sans KR로 대체합니다. */
+        body {
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'Noto Sans KR', 'sans-serif'],
+                    },
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+    <!-- === 헤더/네비게이션 === -->
+    <header class="sticky top-0 z-50 w-full bg-gray-900/80 backdrop-blur-md shadow-lg">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- 로고/이름 -->
+            <a href="#home" class="text-2xl font-bold text-indigo-400">
+                김주형.dev
+            </a>
+            <!-- 네비게이션 링크 (데스크톱) -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#about" class="text-gray-300 hover:text-indigo-400 transition-colors">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-indigo-400 transition-colors">Skills</a>
+                <a href="#project" class="text-gray-300 hover:text-indigo-400 transition-colors">Project</a>
+                <a href="#contact" class="text-gray-300 hover:text-indigo-400 transition-colors">Contact</a>
+            </div>
+            <!-- 모바일 메뉴 버튼 (기능은 추가 구현 필요) -->
+            <button class="md:hidden text-gray-300">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg>
+            </button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- === 1. 히어로 섹션 (Home) === -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center bg-gray-900 px-4">
+            <div class="max-w-3xl">
+                <h1 class="text-5xl md:text-7xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 to-purple-500 pb-2">
+                    김주형
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mt-4 mb-10">
+                    사용자가 다양한 경험을 할 수 있도록 개발하는 개발자
+                </p>
+                <a href="#project" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-8 rounded-lg text-lg transition-transform hover:scale-105">
+                    프로젝트 보기
+                </a>
+            </div>
+        </section>
+
+        <!-- === 2. About Me === -->
+        <section id="about" class="py-24 bg-gray-800">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="text-3xl font-bold text-center mb-12 text-indigo-400">
+                    About Me
+                </h2>
+                <p class="text-lg text-gray-300 leading-relaxed text-center">
+                    저는 사용자가 지루하지 않고 일상 속 불편함을 느끼는 부분에 대해 지속적으로 개선하고, 문제의 본질을 파악하여 더 나은 사용자 경험을 제공하기 위해 노력하는 개발자입니다.
+                </p>
+            </div>
+        </section>
+
+        <!-- === 3. Skills === -->
+        <section id="skills" class="py-24 bg-gray-900">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <h2 class="text-3xl font-bold text-center mb-16 text-indigo-400">
+                    Skills
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- 프론트엔드 -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-6 text-indigo-300 text-center">Frontend</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="bg-gray-700 text-indigo-200 px-4 py-2 rounded-full text-sm font-medium">JavaScript</span>
+                            <span class="bg-gray-700 text-indigo-200 px-4 py-2 rounded-full text-sm font-medium">TypeScript</span>
+                            <span class="bg-gray-700 text-indigo-200 px-4 py-2 rounded-full text-sm font-medium">React</span>
+                        </div>
+                    </div>
+                    <!-- 백엔드 -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-6 text-indigo-300 text-center">Backend</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="bg-gray-700 text-indigo-200 px-4 py-2 rounded-full text-sm font-medium">Node.js</span>
+                        </div>
+                    </div>
+                    <!-- DevOps & Tools -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-xl border border-gray-700">
+                        <h3 class="text-2xl font-semibold mb-6 text-indigo-300 text-center">DevOps & Tools</h3>
+                        <div class="flex flex-wrap gap-3 justify-center">
+                            <span class="bg-gray-700 text-indigo-200 px-4 py-2 rounded-full text-sm font-medium">Git</span>
+                            <span class="bg-gray-700 text-indigo-200 px-4 py-2 rounded-full text-sm font-medium">Figma</span>
+                            <span class="bg-gray-700 text-indigo-200 px-4 py-2 rounded-full text-sm font-medium">Unity</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === 4. Project: 마음토닥 === -->
+        <section id="project" class="py-24 bg-gray-800">
+            <div class="container mx-auto px-6 max-w-5xl">
+                <h2 class="text-3xl font-bold text-center mb-6 text-indigo-400">Featured Project</h2>
+                <p class="text-center text-4xl font-bold mb-12">'마음토닥'</p>
+
+                <div class="bg-gray-900 rounded-lg shadow-2xl p-8 md:p-12 border border-gray-700">
+                    <h3 class="text-2xl font-semibold mb-8 text-center">MBTI & 별자리 기반 심리상담 챗봇</h3>
+                    
+                    <div class="space-y-10">
+                        
+                        <!-- 문제 정의 -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-indigo-300 mb-3">1. 문제 정의</h4>
+                            <p class="text-gray-300 leading-relaxed">
+                                현대인들은 일상 속 다양한 스트레스와 감정적 어려움을 겪지만, 이를 편하게 털어놓을 창구가 부족합니다. 전문적인 상담은 비용과 시간의 장벽이 있고, 지인에게 이야기하기에는 부담을 느낍니다. '마음토닥'은 언제 어디서든 익명으로 감정을 털어놓고 위로를 받을 수 있는 AI 챗봇 서비스입니다.
+                            </p>
+                        </div>
+                        
+                        <!-- 아키텍처 -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-indigo-300 mb-3">2. 아키텍처 / 설계</h4>
+                            <p class="text-gray-300 leading-relaxed mb-4">
+                                사용자에게 즉각적이고 안정적인 서비스를 제공하기 위해 경량 웹 프레임워크와 로컬 LLM을 결합한 아키텍처를 설계했습니다.
+                            </p>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li><strong class="text-gray-100">백엔드:</strong> Python Flask를 사용하여 RESTful API 서버를 구축, 프롬프트 동적 생성 및 로컬 LLM 통신 담당.</li>
+                                <li><strong class="text-gray-100">프론트엔드:</strong> Vanilla JavaScript, HTML, CSS만으로 동적인 SPA 형태의 채팅 UI를 구현하여 가볍고 빠른 UX 제공.</li>
+                                <li><strong class="text-gray-100">AI 모델:</strong> Ollama를 통해 로컬 환경에서 LG EXAONE 모델을 구동. (외부 API 의존성/비용 문제 해결, 프라이버시 확보)</li>
+                            </ul>
+                        </div>
+
+                        <!-- 핵심 기능 -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-indigo-300 mb-4">3. 핵심 기능</h4>
+                            <div class="space-y-6">
+                                <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                                    <h5 class="font-semibold text-lg mb-2 text-indigo-200">페르소나 기반 감성 대화 생성</h5>
+                                    <p class="text-gray-300">사용자의 기분, MBTI, 별자리 정보로 AI의 페르소나('마음토닥')와 역할, 말투, 답변 규칙을 상세하게 정의한 프롬프트 엔지니어링을 적용했습니다. Flask 서버에서 프롬프트를 동적으로 완성해 로컬 EXAONE 모델에 전달, 단순 정보 제공을 넘어 감정에 공감하는 개인화된 위로 메시지를 생성합니다.</p>
+                                </div>
+                                <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                                    <h5 class="font-semibold text-lg mb-2 text-indigo-200">비동기 통신을 활용한 동적 채팅 UI/UX</h5>
+                                    <p class="text-gray-300">Vanilla JavaScript의 fetch API를 사용하여 백엔드와 비동기 통신하는 채팅 인터페이스를 구현했습니다. 메시지 전송 시 새로고침 없이 즉시 표시되며, '입력 중...' 애니메이션과 타이핑 효과를 제공하여 실제 대화와 같은 몰입감과 UX를 향상시켰습니다.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 나의 역할 -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-indigo-300 mb-3">4. 나의 역할 및 기여</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li>Flask 기반 백엔드 서버 아키텍처 설계 및 API 엔드포인트(generate) 구현</li>
+                                <li>AI 페르소나 정의 및 동적 프롬프트 생성 로직 설계 등 프롬프트 엔지니어링 주도</li>
+                                <li>Ollama를 활용하여 로컬 LLM(EXAONE)을 연동하고 응답을 처리하는 로직 구현</li>
+                                <li>Vanilla JS를 사용한 비동기 채팅 UI 개발 및 사용자 경험(타이핑 효과 등) 개선</li>
+                            </ul>
+                        </div>
+
+                        <!-- 결과 및 성과 -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-indigo-300 mb-3">5. 결과 및 성과</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                <li>외부 API 없이 로컬 LLM을 성공적으로 연동하여 월 고정 비용 0원의 서버 운영 환경 구축</li>
+                                <li>정교한 프롬프트 엔지니어링을 통해 사용자의 감정에 깊이 공감하는 인간적인 위로 메시지 생성 기능 구현</li>
+                                <li>경량 기술 스택(Flask, Vanilla JS)을 사용하여 초기 로딩이 빠르고 반응성이 뛰어난 웹 애플리케이션 완성</li>
+                            </ul>
+                        </div>
+
+                        <!-- 회고 -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-indigo-300 mb-3">6. 회고 (배운 점 및 개선점)</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                                    <h5 class="font-semibold text-lg mb-2 text-green-300">배운 점</h5>
+                                    <ul class="list-disc list-inside text-gray-300">
+                                        <li>Flask 백엔드 구축과 프론트엔드 비동기 통신 과정의 깊이 있는 이해</li>
+                                        <li>프롬프트 엔지니어링의 중요성과 AI 페르소나 제어 노하우 습득</li>
+                                    </ul>
+                                </div>
+                                <div class="bg-gray-800 p-4 rounded-lg border border-gray-700">
+                                    <h5 class="font-semibold text-lg mb-2 text-yellow-300">개선점</h5>
+                                    <ul class="list-disc list-inside text-gray-300">
+                                        <li>대화 기록(History)을 관리하여 더 깊이 있는 상담 기능 고도화</li>
+                                        <li>스트리밍(Streaming) 응답 방식으로 사용자 경험 향상</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 동작 흐름 -->
+                        <div>
+                            <h4 class="text-xl font-semibold text-indigo-300 mb-3">7. 동작 흐름</h4>
+                            <ol class="list-decimal list-inside space-y-2 text-gray-300 leading-relaxed">
+                                <li><strong>사용자 입력:</strong> 사용자가 웹페이지에서 MBTI, 별자리, 기분을 입력하고 '전송' 버튼을 누릅니다.</li>
+                                <li><strong>지시문 생성:</strong> 서버는 전달받은 사용자 정보와 미리 정의된 AI의 역할(페르소나, 말투, 규칙)을 조합하여 AI를 위한 상세한 지시문을 만듭니다.</li>
+                                <li><strong>AI 답변 생성:</strong> 이 지시문을 로컬 exaone 모델에 전달하면, 모델이 지시문에 맞춰 따뜻한 위로의 메시지를 생성합니다.</li>
+                                <li><strong>화면에 표시:</strong> 생성된 메시지가 다시 사용자 웹페이지로 돌아와 채팅창에 나타납니다.</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- === 5. Contact === -->
+        <section id="contact" class="py-24 bg-gray-900">
+            <div class="container mx-auto px-6 max-w-3xl text-center">
+                <h2 class="text-3xl font-bold text-center mb-8 text-indigo-400">
+                    Contact Me
+                </h2>
+                <p class="text-lg text-gray-300 mb-10">
+                    저에 대해 더 궁금하거나 함께할 기회가 있다면 아래 채널을 통해 편하게 연락주세요.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center items-center gap-8">
+                    <!-- 이메일 -->
+                    <a href="mailto:jumenmarch@gmail.com" class="flex items-center gap-3 text-lg text-gray-200 hover:text-indigo-400 transition-colors group">
+                        <!-- Mail Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-gray-400 group-hover:text-indigo-400 transition-colors"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                        <span>jumenmarch@gmail.com</span>
+                    </a>
+                    <!-- GitHub -->
+                    <a href="https://github.com/jumenmarch9" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 text-lg text-gray-200 hover:text-indigo-400 transition-colors group">
+                        <!-- GitHub Icon SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6 text-gray-400 group-hover:text-indigo-400 transition-colors"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-4A5 5 0 0 0 18 2h-1.5a4.5 4.5 0 0 0-4.5 4.5V10a5.5 5.5 0 0 0-1.5 4c0 5 3 6.5 6 6.5-1 1-1 3-1 4v4"></path><path d="M9 18c-4.51 2-5-2-7-3"></path></svg>
+                        <span>github.com/jumenmarch9</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- === 푸터 === -->
+    <footer class="py-10 bg-gray-900 border-t border-gray-700">
+        <div class="container mx-auto px-6 text-center text-gray-500">
+            <p>&copy; 2025 김주형. All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
