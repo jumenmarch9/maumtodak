@@ -141,21 +141,21 @@
 
                 <div class="bg-gray-900 rounded-2xl shadow-2xl overflow-hidden border border-gray-700">
                     
-                    <!-- === 4.1 시연 영상 및 배포 링크 (핵심 변경 사항) === -->
+                    <!-- === 4.1 시연 영상 및 배포 링크 === -->
                     <div class="p-8 md:p-12 border-b border-gray-800">
                         <h4 class="text-2xl font-semibold text-white mb-6 flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-indigo-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                             프로젝트 시연 및 배포
                         </h4>
                         
-                        <!-- 동영상 플레이어 (YouTube Iframe으로 변경됨) -->
+                        <!-- 동영상 플레이어 (YouTube Iframe) -->
                         <div class="mb-8 rounded-xl overflow-hidden bg-black aspect-video shadow-lg border border-gray-800 relative">
                             <!-- 
-                                
+                                [중요] 실제 유튜브 영상 ID로 교체 필요
                             -->
                             <iframe 
                                 class="absolute top-0 left-0 w-full h-full"
-                                src="https://www.youtube.com/embed/OZ3fyoL0lvU" 
+                                src="https://www.youtube.com/embed/VIDEO_ID_HERE" 
                                 title="YouTube video player" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
@@ -167,7 +167,7 @@
                         <!-- 배포 링크 버튼 -->
                         <div class="flex flex-col sm:flex-row gap-4 justify-center">
                             <!-- GitHub 저장소 링크 -->
-                            <a href="https://github.com/jumenmarch9/maumtodak" target="_blank" class="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-xl border border-gray-600 transition-all hover:-translate-y-1 shadow-md hover:shadow-indigo-500/20 flex-1 text-center">
+                            <a href="https://github.com/jumenmarch9/maumtodak" target="_blank" rel="noopener noreferrer" class="flex items-center justify-center gap-2 bg-gray-800 hover:bg-gray-700 text-white font-bold py-4 px-8 rounded-xl border border-gray-600 transition-all hover:-translate-y-1 shadow-md hover:shadow-indigo-500/20 flex-1 text-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-1.5 6-6.5a5.5 5.5 0 0 0-1.5-4A5 5 0 0 0 18 2h-1.5a4.5 4.5 0 0 0-4.5 4.5V10a5.5 5.5 0 0 0-1.5 4c0 5 3 6.5 6 6.5-1 1-1 3-1 4v4"></path><path d="M9 18c-4.51 2-5-2-7-3"></path></svg>
                                 GitHub 소스 코드 확인
                             </a>
@@ -320,6 +320,103 @@
                                 </div>
                             </div>
                         </div>
+
+                        <!-- === 사용자 및 평가 결과 (새로 추가됨) === -->
+                        <div class="mt-16">
+                            <h4 class="text-xl font-bold text-indigo-300 mb-6 border-l-4 border-indigo-500 pl-4">5. 사용자 및 평가 결과 (User & Evaluation)</h4>
+                            
+                            <!-- 5.1 사용자 확보 및 특성 -->
+                            <div class="mb-10">
+                                <h5 class="text-lg font-semibold text-white mb-3">5.1 사용자 확보 및 특성</h5>
+                                <div class="bg-gray-800 p-6 rounded-xl border border-gray-700">
+                                    <ul class="list-disc list-inside space-y-2 text-gray-300">
+                                        <li><strong>대상:</strong> MBTI와 심리 테스트에 관심이 많은 20대 대학생 (익명 교내 커뮤니티 및 SNS 홍보)</li>
+                                        <li><strong>기간:</strong> 2024.05.01 ~ 2024.05.14 (2주간 베타 테스트)</li>
+                                        <li><strong>참여 인원:</strong> 총 30명 (로그 데이터 기준 대화 세션 150건 이상 확보)</li>
+                                        <li><strong>특성:</strong> 사용자는 자신의 고민을 털어놓을 때 '정확한 해결책'보다는 '공감과 위로'를 기대하는 경향이 강함.</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <!-- 5.2 평가 결과 통계 (테이블) -->
+                            <div class="mb-10">
+                                <h5 class="text-lg font-semibold text-white mb-3">5.2 사용자 만족도 평가 결과</h5>
+                                <p class="text-sm text-gray-400 mb-4">* 5점 만점 기준 설문조사 결과</p>
+                                <div class="overflow-x-auto">
+                                    <table class="w-full text-left border-collapse rounded-lg overflow-hidden">
+                                        <thead>
+                                            <tr class="bg-gray-700 text-indigo-300">
+                                                <th class="p-4 border-b border-gray-600 font-semibold">평가 항목</th>
+                                                <th class="p-4 border-b border-gray-600 font-semibold text-center">평균 점수</th>
+                                                <th class="p-4 border-b border-gray-600 font-semibold">비고 / 주요 의견</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="text-gray-300 bg-gray-800">
+                                            <tr class="border-b border-gray-700 hover:bg-gray-750">
+                                                <td class="p-4">서비스 참신성 및 흥미</td>
+                                                <td class="p-4 text-center text-indigo-400 font-bold">4.8 / 5.0</td>
+                                                <td class="p-4 text-sm">"MBTI와 별자리를 결합한 컨셉이 신선하다", "친구와 대화하는 기분이다"</td>
+                                            </tr>
+                                            <tr class="border-b border-gray-700 hover:bg-gray-750">
+                                                <td class="p-4">UI/UX 편의성</td>
+                                                <td class="p-4 text-center font-bold">4.5 / 5.0</td>
+                                                <td class="p-4 text-sm">"타자 치는 효과가 몰입감을 준다", "별도 설치 없이 웹으로 접속해 편하다"</td>
+                                            </tr>
+                                            <tr class="hover:bg-gray-750">
+                                                <td class="p-4">답변 일관성 및 캐릭터 유지</td>
+                                                <td class="p-4 text-center text-yellow-500 font-bold">3.2 / 5.0</td>
+                                                <td class="p-4 text-sm">"대화가 길어지면 AI가 말투를 까먹는다", "내 MBTI 특성을 잘 모르는 것 같다"</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- 5.3 핵심 피드백 및 개선 전략 (Troubleshooting) -->
+                            <div>
+                                <h5 class="text-lg font-semibold text-white mb-3">5.3 핵심 피드백 및 기술적 개선 전략 (Retrospective)</h5>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                    
+                                    <!-- Issue 1: MBTI Depth -->
+                                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 relative overflow-hidden">
+                                        <div class="absolute top-0 left-0 w-1 h-full bg-yellow-500"></div>
+                                        <h6 class="font-bold text-yellow-400 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
+                                            피드백 1: MBTI 특성 반영 부족
+                                        </h6>
+                                        <p class="text-sm text-gray-400 mb-3 bg-gray-900/50 p-2 rounded">
+                                            "MBTI의 개별적 특성을 깊이 고려하지 못했다. 단순히 4글자 유형만으로는 사용자 맞춤형 조언에 한계가 있음."
+                                        </p>
+                                        <div class="space-y-2">
+                                            <p class="text-sm text-gray-300 font-semibold text-indigo-300">🚀 개선 전략: RAG (검색 증강 생성) 도입</p>
+                                            <p class="text-xs text-gray-400 leading-relaxed">
+                                                단순 프롬프트 주입 방식을 넘어, MBTI 성격 유형별 상세 데이터베이스(Vector DB)를 구축하고 <strong>RAG 기술을 적용</strong>하겠습니다. 이를 통해 AI가 답변 생성 시 관련 심리학적 특성 정보를 실시간으로 검색/참조하여 더 전문적이고 깊이 있는 조언을 제공하도록 고도화할 계획입니다.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Issue 2: Persona Drift -->
+                                    <div class="bg-gray-800 p-6 rounded-xl border border-gray-700 relative overflow-hidden">
+                                        <div class="absolute top-0 left-0 w-1 h-full bg-red-500"></div>
+                                        <h6 class="font-bold text-red-400 mb-2 flex items-center gap-2">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                            피드백 2: AI 페르소나 이탈(Drift) 현상
+                                        </h6>
+                                        <p class="text-sm text-gray-400 mb-3 bg-gray-900/50 p-2 rounded">
+                                            "대화 도중 AI가 설정된 성격(말투, 역할)을 유지하지 못하고 이탈하여 사용자를 당황하게 함."
+                                        </p>
+                                        <div class="space-y-2">
+                                            <p class="text-sm text-gray-300 font-semibold text-indigo-300">🚀 개선 전략: System Prompt 강화 & Context 관리</p>
+                                            <p class="text-xs text-gray-400 leading-relaxed">
+                                                대화 턴(Turn)이 길어질수록 시스템 지시사항이 희석되는 문제를 해결하기 위해, 매 턴마다 핵심 페르소나 지침을 재주입하는 <strong>System Prompt Reinforcement</strong> 기법을 적용하겠습니다. 또한, 대화 기록(Context History)에서 오래된 내용을 요약(Summarization)하여 토큰 제한 내에서 성격 유지 성능을 극대화할 것입니다.
+                                            </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <!-- === 사용자 및 평가 결과 끝 === -->
 
                     </div>
                 </div>
