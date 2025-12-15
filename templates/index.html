@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>마음토닥 - 당신의 마음을 위로하는 AI</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/pretendard.min.css">
+    <style>
+        /* 기본 스타일 초기화 및 설정 */
+        :root {
+            --background-start: #0a0211;
+            --background-end: #1a0a2c;
+            --primary-color: #bb86fc;
+            --user-bubble-color: #7F5AF0;
+            --ai-bubble-color: #2d3047;
+            --text-color: #e0e0e0;
+            --container-bg: rgba(18, 18, 18, 0.9);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: linear-gradient(-45deg, var(--background-start), var(--background-end), #121212, #2c1a3e);
+            background-size: 400% 400%;
+            color: var(--text-color);
+            font-family: 'Pretendard', 'Malgun Gothic', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+            animation: gradientBG 15s ease infinite;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 메인 컨테이너 (채팅창 전체) */
+        .chat-container {
+            background-color: var(--container-bg);
+            border-radius: 20px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.7);
+            width: 100%;
+            height: 100%;
+            max-width: 800px; /* 너비 확장 */
+            max-height: 95vh; /* 높이 확장 */
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            animation: fadeInSlideUp 0.8s ease-out forwards;
+        }
+
+        @keyframes fadeInSlideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 채팅 헤더 */
+        .chat-header {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            background-color: rgba(30, 30, 30, 0.8);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-header .profile {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            margin-right: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .chat-header h1 {
+            font-size: 1.2em;
+            color: var(--text-color);
+        }
+
+        /* 메시지 영역 */
+        .message-area {
+            flex-grow: 1;
+            padding: 20px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* 스크롤바 스타일 */
+        .message-area::-webkit-scrollbar { width: 6px; }
+        .message-area::-webkit-scrollbar-track { background: transparent; }
+        .message-area::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+        .message-area::-webkit-scrollbar-thumb:hover { background: #777; }
+
+        /* 메시지 말풍선 */
+        .message {
+            display: flex;
+            margin-bottom: 15px;
+            max-width: 85%;
+            animation: messageFadeIn 0.5s ease-out forwards;
+        }
+
+        @keyframes messageFadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .message.ai { align-self: flex-start; }
+        .message.user { align-self: flex-end; }
+
+        .message .content {
+            color: #fff;
+            padding: 12px 18px;
+            border-radius: 20px;
+            text-align: left;
+            word-break: break-word;
+        }
+
+        .message.ai .content { background-color: var(--ai-bubble-color); border-top-left-radius: 5px; }
+        .message.user .content { background-color: var(--user-bubble-color); color: white; border-top-right-radius: 5px; }
+
+        /* 타이핑 인디케이터 */
+        .typing-indicator {
+            display: flex;
+            align-items: center;
+            background-color: var(--ai-bubble-color);
+            border-radius: 20px;
+            padding: 12px 18px;
+        }
+        .typing-indicator span {
+            height: 8px;
+            width: 8px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+            display: inline-block;
+            margin: 0 2px;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
+        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1.0); }
+        }
+
+        /* 입력 폼 */
+        #message-form {
+            display: flex;
+            padding: 10px;
+            background-color: rgba(30, 30, 30, 0.8);
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            gap: 10px;
+            align-items: center;
+        }
+
+        select, input[type="text"] {
+            background-color: #333;
+            color: var(--text-color);
+            border: 1px solid #555;
+            border-radius: 20px;
+            padding: 10px 15px;
+            font-size: 1em;
+        }
+        select:focus, input[type="text"]:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        #mbti, #zodiac { flex-shrink: 0; }
+        #mood { 
+            flex-grow: 1; 
+            /* 입력창이 다른 요소와 공간을 유연하게 조절하도록 min-width 추가 */
+            min-width: 100px;
+        }
+
+        button {
+            background-color: var(--user-bubble-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 42px;
+            height: 42px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button:hover { background-color: #9678fa; }
+        button:disabled { background-color: #555; cursor: not-allowed; }
+        button:active:not(:disabled) { transform: scale(0.9); }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <div class="profile">AI</div>
+            <h1>마음토닥</h1>
+        </div>
+
+        <div class="message-area" id="messageArea">
+            <!-- 메시지가 여기에 추가됩니다 -->
+        </div>
+
+        <form id="message-form">
+            <select id="mbti" name="mbti">
+                <option value="모름">MBTI</option>
+                <option value="ISTJ">ISTJ</option> <option value="ISFJ">ISFJ</option>
+                <option value="INFJ">INFJ</option> <option value="INTJ">INTJ</option>
+                <option value="ISTP">ISTP</option> <option value="ISFP">ISFP</option>
+                <option value="INFP">INFP</option> <option value="INTP">INTP</option>
+                <option value="ESTP">ESTP</option> <option value="ESFP">ESFP</option>
+                <option value="ENFP">ENFP</option> <option value="ENTP">ENTP</option>
+                <option value="ESTJ">ESTJ</option> <option value="ESFJ">ESFJ</option>
+                <option value="ENFJ">ENFJ</option> <option value="ENTJ">ENTJ</option>
+            </select>
+            <select id="zodiac" name="zodiac">
+                <option value="모름">별자리</option>
+                <option value="양자리">양자리</option> <option value="황소자리">황소자리</option>
+                <option value="쌍둥이자리">쌍둥이자리</option> <option value="게자리">게자리</option>
+                <option value="사자자리">사자자리</option> <option value="처녀자리">처녀자리</option>
+                <option value="천칭자리">천칭자리</option> <option value="전갈자리">전갈자리</option>
+                <option value="사수자리">사수자리</option> <option value="염소자리">염소자리</option>
+                <option value="물병자리">물병자리</option> <option value="물고기자리">물고기자리</option>
+            </select>
+            <input type="text" id="mood" name="message" placeholder="오늘의 기분은 어떠신가요?" required autocomplete="off">
+            <button type="submit" id="submitButton">↑</button>
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById('message-form');
+        const moodInput = document.getElementById('mood');
+        const messageArea = document.getElementById('messageArea');
+        const submitButton = document.getElementById('submitButton');
+
+        // 페이지 로드 시 첫 메시지 표시
+        window.addEventListener('load', () => {
+            displayMessage('ai', '안녕하세요! 당신의 마음을 토닥여줄게요. 오늘의 기분은 어떠신가요?');
+        });
+
+        // 폼 제출 이벤트
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const moodText = moodInput.value.trim();
+            if (!moodText) return;
+
+            // 3. 서버에 보낼 데이터 먼저 생성
+            const formData = new FormData(form);
+
+            // 1. 사용자 메시지 표시
+            displayMessage('user', moodText);
+            moodInput.value = '';
+            submitButton.disabled = true;
+            moodInput.disabled = true;
+
+            // 2. AI 타이핑 인디케이터 표시
+            const typingIndicator = displayTypingIndicator();
+
+            try {
+                const response = await fetch('/generate', {
+                    method: 'POST',
+                    body: formData // 생성해둔 데이터를 전송
+                });
+                if (!response.ok) {
+                    throw new Error(`서버 오류: ${response.statusText}`);
+                }
+                const aiMessage = await response.text();
+
+                // 4. AI 메시지 표시 (타이핑 효과)
+                displayMessage('ai', aiMessage, true);
+
+            } catch (error) {
+                console.error('Error:', error);
+                displayMessage('ai', '메시지를 가져오는 데 실패했어요. 잠시 후 다시 시도해주세요.');
+            } finally {
+                // 5. 타이핑 인디케이터 제거 및 버튼 활성화
+                typingIndicator.remove();
+                submitButton.disabled = false;
+                moodInput.disabled = false;
+                moodInput.focus();
+            }
+        });
+
+        // 메시지를 화면에 표시하는 함수
+        function displayMessage(sender, text, useTypewriter = false) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('message', sender);
+
+            const contentDiv = document.createElement('div');
+            contentDiv.classList.add('content');
+            
+            messageDiv.appendChild(contentDiv);
+            messageArea.appendChild(messageDiv);
+
+            if (useTypewriter) {
+                typeWriterEffect(contentDiv, text);
+            } else {
+                contentDiv.textContent = text;
+            }
+            
+            scrollToBottom();
+        }
+
+        // 타이핑 인디케이터를 표시하는 함수
+        function displayTypingIndicator() {
+            const indicatorWrapper = document.createElement('div');
+            indicatorWrapper.classList.add('message', 'ai');
+            indicatorWrapper.innerHTML = `
+                <div class="typing-indicator">
+                    <span></span><span></span><span></span>
+                </div>
+            `;
+            messageArea.appendChild(indicatorWrapper);
+            scrollToBottom();
+            return indicatorWrapper;
+        }
+
+        // 타자 치는 효과 함수
+        function typeWriterEffect(element, message, speed = 30) {
+            let i = 0;
+            element.textContent = "";
+            function typing() {
+                if (i < message.length) {
+                    element.textContent += message.charAt(i);
+                    i++;
+                    scrollToBottom(); // 글자 추가될 때마다 스크롤
+                    setTimeout(typing, speed);
+                }
+            }
+            typing();
+        }
+
+        // 스크롤을 맨 아래로 이동시키는 함수
+        function scrollToBottom() {
+            messageArea.scrollTop = messageArea.scrollHeight;
+        }
+    </script>
+</body>
+</html>
